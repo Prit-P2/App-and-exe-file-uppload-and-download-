@@ -18,9 +18,12 @@ const upload = multer({
     },
     fileFilter: (req, file, cb) => {
         const allowedTypes = [
-            'application/vnd.android.package-archive',
-            'application/x-msdownload'
-        ];
+    'application/vnd.android.package-archive', // .apk
+    'application/x-msdownload', // .exe, .msi
+    'text/x-c', // .c files
+    'text/x-python' // .py files
+];
+
         
         if (allowedTypes.includes(file.mimetype)) {
             cb(null, true);
